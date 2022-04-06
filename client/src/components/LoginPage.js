@@ -1,17 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import "antd/dist/antd.css";
 import "../App.css";
 import { Form, Input, Button, Checkbox } from "antd";
 import { Row, Col } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import HeaderLoggedOut from "./HeaderLoggedOut";
 
-function LoginPage() {
+function LoginPage({ setCurrentUser }) {
+  const [state, setState] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    })
+      .then((r) => r.json())
+      .then((user) => setCurrentUser(user));
+  }
+  function handleClick(e) {
+    console.log("click ", e);
+    setState({ current: e.key });
+  }
   const onFinish = (values) => {
     console.log("Success:", values);
   };
 
   return (
     <div>
+      <HeaderLoggedOut />
       <Row gutter={[8, 16]}>
         <Col span={8}></Col>
         <Col span={8}>
@@ -27,12 +49,7 @@ function LoginPage() {
         <Col span={8}></Col>
 
         <Col span={8}></Col>
-        <Col
-          span={8}
-          //   style={{
-          //     textAlign: "center",
-          //   }}
-        >
+        <Col span={8}>
           {" "}
           <Form
             name="normal_login"
@@ -51,6 +68,8 @@ function LoginPage() {
                   message: "Please input your Username!",
                 },
               ]}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             >
               <Input
                 prefix={<UserOutlined className="site-form-item-icon" />}
@@ -65,6 +84,8 @@ function LoginPage() {
                   message: "Please input your Password!",
                 },
               ]}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             >
               <Input
                 prefix={<LockOutlined className="site-form-item-icon" />}
@@ -102,6 +123,7 @@ function LoginPage() {
                 style={{
                   margin: "auto",
                 }}
+                onClick={handleClick}
               >
                 Log in
               </Button>

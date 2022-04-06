@@ -4,6 +4,7 @@ import "../App.css";
 import { Form, Input, Button } from "antd";
 import { Row, Col } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import HeaderLoggedOut from "./HeaderLoggedOut";
 
 function SignUpPage() {
   const onFinish = (values) => {
@@ -12,6 +13,18 @@ function SignUpPage() {
 
   return (
     <div>
+      {/* <div>
+        <iframe
+          title="deezer-widget"
+          src="https://widget.deezer.com/widget/dark/playlist/1479458365"
+          width="100%"
+          height="300"
+          frameborder="0"
+          allowtransparency="true"
+          allow="encrypted-media; clipboard-write"
+        ></iframe>
+      </div> */}
+      <HeaderLoggedOut />
       <Row gutter={[8, 16]}>
         <Col span={8}></Col>
         <Col span={8}>
