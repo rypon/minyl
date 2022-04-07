@@ -3,13 +3,11 @@ import "antd/dist/antd.css";
 import "../App.css";
 import { Button } from "antd";
 import { Row, Col } from "antd";
-import HeaderLoggedOut from "./HeaderLoggedOut";
 import { Link } from "react-router-dom";
 
 function StarterPage() {
   return (
     <div>
-      <HeaderLoggedOut />
       <Row>
         <Col span={8}></Col>
         <Col span={8}>

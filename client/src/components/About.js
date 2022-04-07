@@ -1,13 +1,7 @@
 import React from "react";
-import HeaderLoggedOut from "./HeaderLoggedOut";
 
 function About() {
-  return (
-    <div>
-      <HeaderLoggedOut />
-      About
-    </div>
-  );
+  return <div>About</div>;
 }
 
 export default About;

@@ -4,12 +4,13 @@ import "../App.css";
 import { Form, Input, Button, Checkbox } from "antd";
 import { Row, Col } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import HeaderLoggedOut from "./HeaderLoggedOut";
+import { useNavigate } from "react-router-dom";
 
-function LoginPage({ setCurrentUser }) {
+function LoginPage({ setCurrentUser, setIsAuthenticated }) {
   const [state, setState] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -21,11 +22,20 @@ function LoginPage({ setCurrentUser }) {
       body: JSON.stringify({ username, password }),
     })
       .then((r) => r.json())
-      .then((user) => setCurrentUser(user));
-  }
-  function handleClick(e) {
-    console.log("click ", e);
-    setState({ current: e.key });
+      .then(() => {
+        fetch("/authorized_user").then((res) => {
+          if (res.ok) {
+            res.json().then((user) => {
+              setIsAuthenticated(true);
+              setCurrentUser(user);
+
+              navigate("/home"); //test sending to signup for now
+            });
+          } else {
+            alert("Incorrect Username or Password");
+          }
+        });
+      });
   }
   const onFinish = (values) => {
     console.log("Success:", values);
@@ -33,7 +43,6 @@ function LoginPage({ setCurrentUser }) {
 
   return (
     <div>
-      <HeaderLoggedOut />
       <Row gutter={[8, 16]}>
         <Col span={8}></Col>
         <Col span={8}>
@@ -123,7 +132,7 @@ function LoginPage({ setCurrentUser }) {
                 style={{
                   margin: "auto",
                 }}
-                onClick={handleClick}
+                onClick={handleSubmit}
               >
                 Log in
               </Button>
