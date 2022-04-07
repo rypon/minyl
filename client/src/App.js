@@ -5,7 +5,6 @@ import SignUpPage from "./components/SignUpPage";
 import StarterPage from "./components/StarterPage";
 import About from "./components/About";
 import { useNavigate } from "react-router-dom";
-
 import { Routes, Route } from "react-router-dom";
 import LanderPage from "./components/LanderPage";
 import HeaderLoggedIn from "./components/HeaderLoggedIn";
@@ -39,13 +38,14 @@ function App() {
     navigate("/");
   };
 
-  console.log(currentUser);
-
   return (
     <div className="App">
       <div>
         {currentUser ? (
-          <HeaderLoggedIn handleLogout={handleLogout} />
+          <HeaderLoggedIn
+            handleLogout={handleLogout}
+            currentUser={currentUser}
+          />
         ) : (
           <HeaderLoggedOut />
         )}

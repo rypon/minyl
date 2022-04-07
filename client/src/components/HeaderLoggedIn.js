@@ -12,13 +12,15 @@ import { Link } from "react-router-dom";
 const { Header } = Layout;
 const { SubMenu } = Menu;
 
-function HeaderLoggedIn({ handleLogout }) {
+function HeaderLoggedIn({ handleLogout, currentUser }) {
   const [state, setState] = useState("");
 
   function handleClick(e) {
     console.log("click ", e);
     setState({ current: e.key });
   }
+
+  const profileHeader = `Hello, ${currentUser.username}`;
 
   return (
     <div>
@@ -48,7 +50,11 @@ function HeaderLoggedIn({ handleLogout }) {
             <Menu.Item key="mail" icon={<CustomerServiceOutlined />}>
               My Collection
             </Menu.Item>
-            <SubMenu key="SubMenu" icon={<DownOutlined />} title="Username">
+            <SubMenu
+              key="SubMenu"
+              icon={<DownOutlined />}
+              title={profileHeader}
+            >
               {/* <Menu.ItemGroup title="Item 1"> */}
               <Menu.Item key="setting:1">
                 <div>
