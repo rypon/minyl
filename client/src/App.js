@@ -10,6 +10,7 @@ import LanderPage from "./components/LanderPage";
 import HeaderLoggedIn from "./components/HeaderLoggedIn";
 import HeaderLoggedOut from "./components/HeaderLoggedOut";
 import NotAuthorized from "./components/NotAuthorized";
+import SearchAlbum from "./components/SearchAlbum";
 
 function App() {
   const [currentUser, setCurrentUser] = useState("");
@@ -72,6 +73,7 @@ function App() {
             />
           }
         />
+        <Route path="/search" element={<SearchAlbum />} />
         <Route
           exact
           path="/home"

@@ -3,14 +3,8 @@ import { Card } from "semantic-ui-react";
 
 function CurrentTopAlbumsCard({ album }) {
   return (
-    <Card fluid="true">
-      <img
-        src={`${album.cover_xl}`}
-        alt={album.artist.name}
-        wrapped
-        ui={true}
-        size="small"
-      />
+    <Card>
+      <img src={`${album.cover_xl}`} alt={album.artist.name} size="small" />
       <Card.Content>
         <Card.Header>{album.title}</Card.Header>
         <Card.Meta>

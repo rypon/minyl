@@ -3,7 +3,7 @@ import "../App.css";
 import React, { useState, useEffect } from "react";
 import CurrentTopAlbumsContainer from "./CurrentTopAlbumsContainer";
 import { Row, Col } from "antd";
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import SearchAlbum from "./SearchAlbum";
 
 function LanderPage() {
   const [getAlbums, setGetAlbums] = useState([]);
@@ -26,10 +26,22 @@ function LanderPage() {
       <Row align="center">
         <Col>
           {" "}
-          <h2>Today's hottest music</h2>
+          <h2
+            style={{
+              marginTop: "25px",
+              marginBottom: "25px",
+              fontSize: "32px",
+            }}
+          >
+            Today's hottest music
+          </h2>
         </Col>
       </Row>
-
+      <Row align="center">
+        <Col>
+          <SearchAlbum />
+        </Col>
+      </Row>
       <Row gutter={[8, 8]}>
         <Col span={2}> </Col>
         <Col span={2}> </Col>
