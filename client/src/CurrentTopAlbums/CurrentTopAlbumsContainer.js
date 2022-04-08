@@ -3,8 +3,8 @@ import CurrentTopAlbumsCard from "./CurrentTopAlbumsCard";
 
 import { Card } from "semantic-ui-react";
 
-function CurrentTopAlbumContainer({ albums }) {
-  const topAlbums = albums.map((album) => (
+function CurrentTopAlbumContainer({ curAlbums }) {
+  const CurTopCards = curAlbums?.map((album) => (
     <CurrentTopAlbumsCard
       key={album.id}
       album={album}
@@ -12,7 +12,7 @@ function CurrentTopAlbumContainer({ albums }) {
     />
   ));
 
-  return <Card.Group itemsPerRow={5}>{topAlbums}</Card.Group>;
+  return <Card.Group itemsPerRow={5}>{CurTopCards}</Card.Group>;
 }
 
 export default CurrentTopAlbumContainer;

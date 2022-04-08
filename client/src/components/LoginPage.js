@@ -29,7 +29,7 @@ function LoginPage({ setCurrentUser, setIsAuthenticated }) {
               setIsAuthenticated(true);
               setCurrentUser(user);
 
-              navigate("/home"); //test sending to signup for now
+              navigate("/home");
             });
           } else {
             alert("Incorrect Username or Password");

@@ -1,25 +1,45 @@
 import "antd/dist/antd.css";
 import "../App.css";
 import React, { useState, useEffect } from "react";
-import CurrentTopAlbumsContainer from "./CurrentTopAlbumsContainer";
+import SearchAlbumContainer from "../Search/SearchAlbumContainer";
 import { Row, Col } from "antd";
-import SearchAlbum from "./SearchAlbum";
+import SearchAlbum from "../Search/SearchAlbum";
+import CurrentTopAlbumContainer from "../CurrentTopAlbums/CurrentTopAlbumsContainer";
 
 function LanderPage() {
-  const [getAlbums, setGetAlbums] = useState([]);
+  const [currentAlbums, setCurrentAlbums] = useState([]);
 
   useEffect(() => {
     fetch("https://api.deezer.com/chart/top?limit=50")
       .then((res) => res.json())
       .then((data) => {
-        setGetAlbums(data.albums.data);
+        setCurrentAlbums(data.albums.data);
       });
   }, []);
 
-  const topAlbums = getAlbums;
+  const curAlbums = currentAlbums?.map((album) => album);
+  // console.log(curAlbums);
 
-  const albums = topAlbums?.map((album) => album);
-  console.log(albums);
+  const [albumSearch, setAlbumSearch] = useState([]);
+  const [count, setCount] = useState(0);
+  const [search, setSearch] = useState("");
+
+  let url = `https://api.deezer.com/search/album?q=${search}`;
+  // console.log(url);
+
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        setAlbumSearch(data.data);
+      });
+  }, [count]);
+
+  // console.log(albumSearch);
+  // console.log(search);
+
+  const searchAlbum = albumSearch?.map((album) => album);
+  // console.log(searchAlbum);
 
   return (
     <div>
@@ -39,7 +59,12 @@ function LanderPage() {
       </Row>
       <Row align="center">
         <Col>
-          <SearchAlbum />
+          <SearchAlbum
+            setCount={setCount}
+            setSearch={setSearch}
+            count={count}
+            search={search}
+          />
         </Col>
       </Row>
       <Row gutter={[8, 8]}>
@@ -51,7 +76,11 @@ function LanderPage() {
         <Col span={2}> </Col>
 
         <Col md={20}>
-          <CurrentTopAlbumsContainer albums={albums} />
+          {albumSearch === undefined ? (
+            <CurrentTopAlbumContainer curAlbums={curAlbums} />
+          ) : (
+            <SearchAlbumContainer searchAlbum={searchAlbum} />
+          )}
         </Col>
         <Col span={2}> </Col>
       </Row>

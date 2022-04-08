@@ -10,7 +10,7 @@ import LanderPage from "./components/LanderPage";
 import HeaderLoggedIn from "./components/HeaderLoggedIn";
 import HeaderLoggedOut from "./components/HeaderLoggedOut";
 import NotAuthorized from "./components/NotAuthorized";
-import SearchAlbum from "./components/SearchAlbum";
+import SearchAlbum from "./Search/SearchAlbum";
 
 function App() {
   const [currentUser, setCurrentUser] = useState("");
