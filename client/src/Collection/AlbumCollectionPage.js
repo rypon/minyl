@@ -3,7 +3,7 @@ import { Row, Col } from "antd";
 import "antd/dist/antd.css";
 import "../App.css";
 import AlbumCollectionContainer from "./AlbumCollectionContainer";
-function AlbumCollectionPage() {
+function AlbumCollectionPage({ albumCollection, albumId }) {
   return (
     <div>
       <Row align="center">
@@ -32,7 +32,10 @@ function AlbumCollectionPage() {
         <Col span={2}> </Col>
 
         <Col md={20}>
-          <AlbumCollectionContainer />
+          <AlbumCollectionContainer
+            albumCollection={albumCollection}
+            albumId={albumId}
+          />
         </Col>
         <Col span={2}> </Col>
       </Row>

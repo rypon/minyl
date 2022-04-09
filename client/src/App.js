@@ -11,10 +11,12 @@ import HeaderLoggedIn from "./components/HeaderLoggedIn";
 import HeaderLoggedOut from "./components/HeaderLoggedOut";
 import NotAuthorized from "./components/NotAuthorized";
 import AlbumCollectionPage from "./Collection/AlbumCollectionPage";
+import Vinyl from "./EachVinyl/Vinyl";
 
 function App() {
   const [currentUser, setCurrentUser] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [albumCollection, setAlbumCollection] = useState([]);
   const navigate = useNavigate();
 
   //Authenticate
@@ -38,6 +40,17 @@ function App() {
     setIsAuthenticated(false);
     navigate("/");
   };
+
+  useEffect(() => {
+    fetch(`http://localhost:4000/albums/`)
+      .then((res) => res.json())
+      .then((data) => {
+        setAlbumCollection(data);
+      });
+  }, []);
+
+  // const albumID = albumCollection?.map((album) => album);
+  // console.log(albumID);
 
   return (
     <div className="App">
@@ -85,11 +98,24 @@ function App() {
             />
           }
         />
-        <Route path="/collection" element={<AlbumCollectionPage />} />
+        <Route
+          path="/collection"
+          element={
+            <AlbumCollectionPage
+              albumCollection={albumCollection}
+              setAlbumCollection={setAlbumCollection}
+            />
+          }
+        />
         <Route
           exact
           path="/home"
           element={currentUser ? <LanderPage /> : <NotAuthorized />}
+        />
+        <Route
+          exact
+          path={`/album/:id`}
+          element={<Vinyl albumCollection={albumCollection} />}
         />
       </Routes>
     </div>
@@ -97,38 +123,3 @@ function App() {
 }
 
 export default App;
-
-// const DeezerPublicApi = require("deezer-public-api");
-// let deezer = new DeezerPublicApi();
-
-// const [artist, setArtist] = useState([]);
-
-// //Search an artist
-// useEffect(() => {
-//   deezer.search.artist("ILYSH").then(function (result) {
-//     setArtist(result);
-//   });
-// }, []);
-
-// const artistSearch = artist.data;
-// console.log(artistSearch);
-// //get artist image url
-// const artistPicture = artistSearch?.map((pic) => pic.picture_small);
-// console.log(artistPicture);
-
-// //gets specific artist name:
-// function getArtistName() {
-//   const getNestedObject = (nestedObj, pathArr) => {
-//     return pathArr.reduce(
-//       (obj, key) => (obj && obj[key] !== "undefined" ? obj[key] : undefined),
-//       nestedObj
-//     );
-//   };
-
-//   const name = getNestedObject(artistSearch, ["0"]);
-
-//   const artistName = name?.name;
-//   console.log(artistName);
-// }
-
-// getArtistName();

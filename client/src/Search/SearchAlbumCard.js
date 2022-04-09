@@ -40,21 +40,3 @@ function SearchAlbumCard({ album }) {
 }
 
 export default SearchAlbumCard;
-
-// const newAlbum = {
-//   deezer_album_id: album.id,
-//   album_image: album.cover_xl,
-//   album_name: album.title,
-//   // artist_id: album.artist.id,
-//   genre: album.genre_id,
-//   num_tracks: album.nb_tracks,
-// };
-// fetch("/albums", {
-//   method: "POST",
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-//   body: JSON.stringify({ newAlbum }),
-// })
-//   .then((r) => r.json())
-//   .then(console.log(newAlbum));

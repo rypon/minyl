@@ -7,7 +7,7 @@ class AlbumsController < ApplicationController
     end
 
     def show
-        render json: Album.find!(params[:id]), status: :ok
+        render json: Album.find(params[:id]), status: :ok
     end
 
     def create
