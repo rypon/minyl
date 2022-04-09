@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "semantic-ui-react";
+import { Button, Card } from "semantic-ui-react";
 
 function CurrentTopAlbumsCard({ album }) {
   return (
@@ -11,6 +11,7 @@ function CurrentTopAlbumsCard({ album }) {
           <span className="released">{album.artist.name}</span>
         </Card.Meta>
       </Card.Content>
+      <Button onClick={() => console.log(album)}>Add to Collection</Button>
     </Card>
   );
 }

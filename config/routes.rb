@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  resources :artists
   resources :tracks
-  resources :albums
+  resources :albums , only: [:index, :show, :create]
   resources :reviews
   resources :vinyls
   resources :users, only: [:index, :show, :update, :destroy, :create]

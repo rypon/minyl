@@ -5,7 +5,17 @@ import { Button } from "antd";
 import { Row, Col } from "antd";
 import { Link } from "react-router-dom";
 
-function StarterPage() {
+function StarterPage({ handleLogout, currentUser, isAuthenticated }) {
+  // function logoutIfStillAuthenticated() {
+  //   if (isAuthenticated === true) {
+  //     handleLogout();
+  //     window.location.reload();
+  //   } else {
+  //     console.log(currentUser);
+  //   }
+  // }
+
+  // logoutIfStillAuthenticated();
   return (
     <div>
       <Row>

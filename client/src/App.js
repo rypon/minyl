@@ -10,7 +10,7 @@ import LanderPage from "./components/LanderPage";
 import HeaderLoggedIn from "./components/HeaderLoggedIn";
 import HeaderLoggedOut from "./components/HeaderLoggedOut";
 import NotAuthorized from "./components/NotAuthorized";
-import SearchAlbum from "./Search/SearchAlbum";
+import AlbumCollectionPage from "./Collection/AlbumCollectionPage";
 
 function App() {
   const [currentUser, setCurrentUser] = useState("");
@@ -52,7 +52,19 @@ function App() {
         )}
       </div>
       <Routes>
-        <Route exact path="/" element={<StarterPage />} />
+        <Route
+          exact
+          path="/"
+          element={
+            <StarterPage
+              handleLogout={handleLogout}
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+              isAuthenticated={isAuthenticated}
+              setIsAuthenticated={setIsAuthenticated}
+            />
+          }
+        />
         <Route
           path="/login"
           element={
@@ -73,7 +85,7 @@ function App() {
             />
           }
         />
-        <Route path="/search" element={<SearchAlbum />} />
+        <Route path="/collection" element={<AlbumCollectionPage />} />
         <Route
           exact
           path="/home"

@@ -1,7 +1,30 @@
 import React from "react";
-import { Card } from "semantic-ui-react";
+import { Button, Card } from "semantic-ui-react";
 
 function SearchAlbumCard({ album }) {
+  function handleAddToCollection(e) {
+    e.preventDefault();
+    const newAlbum = {
+      deezer_album_id: album.id,
+      album_image: album.cover_xl,
+      album_name: album.title,
+      deezer_artist_id: album.artist.id,
+      genre: album.genre_id,
+      num_tracks: album.nb_tracks,
+      artist_name: album.artist.name,
+      artist_image: album.artist.picture_xl,
+    };
+    fetch("/albums", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newAlbum),
+    })
+      .then((r) => r.json())
+      .then(console.log(newAlbum));
+  }
+
   return (
     <Card>
       <img src={`${album.cover_xl}`} alt={album.artist.name} size="small" />
@@ -11,8 +34,27 @@ function SearchAlbumCard({ album }) {
           <span className="released">{album.artist.name}</span>
         </Card.Meta>
       </Card.Content>
+      <Button onClick={handleAddToCollection}>Add to Collection</Button>
     </Card>
   );
 }
 
 export default SearchAlbumCard;
+
+// const newAlbum = {
+//   deezer_album_id: album.id,
+//   album_image: album.cover_xl,
+//   album_name: album.title,
+//   // artist_id: album.artist.id,
+//   genre: album.genre_id,
+//   num_tracks: album.nb_tracks,
+// };
+// fetch("/albums", {
+//   method: "POST",
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+//   body: JSON.stringify({ newAlbum }),
+// })
+//   .then((r) => r.json())
+//   .then(console.log(newAlbum));

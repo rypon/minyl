@@ -47,9 +47,11 @@ function HeaderLoggedIn({ handleLogout, currentUser }) {
             mode="horizontal"
             theme="dark"
           >
-            <Menu.Item key="mail" icon={<CustomerServiceOutlined />}>
-              My Collection
-            </Menu.Item>
+            <Link to="/collection">
+              <Menu.Item key="mail" icon={<CustomerServiceOutlined />}>
+                My Collection
+              </Menu.Item>
+            </Link>
             <SubMenu
               key="SubMenu"
               icon={<DownOutlined />}

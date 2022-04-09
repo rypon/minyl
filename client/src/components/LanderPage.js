@@ -40,7 +40,6 @@ function LanderPage() {
 
   const searchAlbum = albumSearch?.map((album) => album);
   // console.log(searchAlbum);
-
   return (
     <div>
       <Row align="center">
