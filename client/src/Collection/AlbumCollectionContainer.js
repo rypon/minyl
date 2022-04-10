@@ -1,9 +1,11 @@
 import React from "react";
 import AlbumCollectionCard from "./AlbumCollectionCard";
 
+
 import { Card } from "semantic-ui-react";
 
 function AlbumCollectionContainer({ albumCollection }) {
+
   const collection = albumCollection?.map((album) => (
     <AlbumCollectionCard
       key={album.id}
