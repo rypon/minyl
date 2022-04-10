@@ -5,3 +5,14 @@
     width: 200px;
     background-color:#3865FE;
   }
+
+  .vinyl {
+      width: 300px;
+      height: 300px;
+      margin-bottom: 25px;
+  }
+
+  .vinylReview {
+    height: 175px;
+    width: 500px;
+  }

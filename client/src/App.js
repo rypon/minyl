@@ -11,7 +11,8 @@ import HeaderLoggedIn from "./components/HeaderLoggedIn";
 import HeaderLoggedOut from "./components/HeaderLoggedOut";
 import NotAuthorized from "./components/NotAuthorized";
 import AlbumCollectionPage from "./Collection/AlbumCollectionPage";
-import Vinyl from "./EachVinyl/Vinyl";
+import VinylReview from "./EachVinyl/VinylReview";
+import VinylView from "./EachVinyl/VinylView";
 
 function App() {
   const [currentUser, setCurrentUser] = useState("");
@@ -114,8 +115,13 @@ function App() {
         />
         <Route
           exact
-          path={`/album/:id`}
-          element={<Vinyl albumCollection={albumCollection} />}
+          path={`/album/:id/review`}
+          element={<VinylReview currentUser={currentUser} />}
+        />
+        <Route
+          exact
+          path={`/album/:id/view`}
+          element={<VinylView currentUser={currentUser} />}
         />
       </Routes>
     </div>

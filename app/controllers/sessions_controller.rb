@@ -18,5 +18,6 @@ class SessionsController < ApplicationController
         session.delete :current_user
         render json: {}
     end
+    
 
 end

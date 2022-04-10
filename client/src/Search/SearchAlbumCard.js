@@ -1,10 +1,7 @@
 import React from "react";
 import { Button, Card } from "semantic-ui-react";
-import { useNavigate } from "react-router-dom";
 
 function SearchAlbumCard({ album }) {
-  const navigate = useNavigate();
-
   function handleAddToCollection(e) {
     e.preventDefault();
     const newAlbum = {
@@ -26,7 +23,6 @@ function SearchAlbumCard({ album }) {
     })
       .then((r) => r.json())
       .then(console.log(newAlbum));
-      
   }
 
   return (

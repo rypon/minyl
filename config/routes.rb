@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :tracks
-  resources :albums , only: [:index, :show, :create]
-  resources :reviews
+  resources :albums , only: [:index, :show, :create] do
+    resources :reviews
+  end
+  # resources :reviews 
   resources :vinyls
   resources :users, only: [:index, :show, :update, :destroy, :create]
 
