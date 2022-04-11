@@ -6,7 +6,7 @@ import { Row, Col } from "antd";
 import SearchAlbum from "../Search/SearchAlbum";
 import CurrentTopAlbumContainer from "../CurrentTopAlbums/CurrentTopAlbumsContainer";
 
-function LanderPage() {
+function LanderPage({ currentUser }) {
   const [currentAlbums, setCurrentAlbums] = useState([]);
 
   useEffect(() => {
@@ -78,7 +78,10 @@ function LanderPage() {
           {albumSearch === undefined ? (
             <CurrentTopAlbumContainer curAlbums={curAlbums} />
           ) : (
-            <SearchAlbumContainer searchAlbum={searchAlbum} />
+            <SearchAlbumContainer
+              currentUser={currentUser}
+              searchAlbum={searchAlbum}
+            />
           )}
         </Col>
         <Col span={2}> </Col>

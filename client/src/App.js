@@ -18,8 +18,8 @@ function App() {
   const [currentUser, setCurrentUser] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [albumCollection, setAlbumCollection] = useState([]);
+  const [currentUserId, setCurrentUserId] = useState("");
   const navigate = useNavigate();
-
   //Authenticate
   useEffect(() => {
     fetch("/authorized_user").then((res) => {
@@ -32,6 +32,8 @@ function App() {
     });
   }, []);
 
+  // console.log(currentUser.id);
+
   //logout
   const handleLogout = () => {
     fetch("/logout", {
@@ -39,16 +41,18 @@ function App() {
     });
     setCurrentUser(null);
     setIsAuthenticated(false);
+    setCurrentUserId("");
     navigate("/");
   };
 
   useEffect(() => {
-    fetch(`http://localhost:4000/albums/`)
-      .then((res) => res.json())
-      .then((data) => {
-        setAlbumCollection(data);
-      });
-  }, []);
+    if (currentUser)
+      fetch(`http://localhost:4000/users/${currentUser.id}/albums`)
+        .then((res) => res.json())
+        .then((data) => {
+          setAlbumCollection(data);
+        });
+  }, [currentUser]);
 
   // const albumID = albumCollection?.map((album) => album);
   // console.log(albumID);
@@ -84,6 +88,7 @@ function App() {
           element={
             <LoginPage
               setCurrentUser={setCurrentUser}
+              setCurrentUserId={setCurrentUserId}
               setIsAuthenticated={setIsAuthenticated}
             />
           }
@@ -105,13 +110,20 @@ function App() {
             <AlbumCollectionPage
               albumCollection={albumCollection}
               setAlbumCollection={setAlbumCollection}
+              // deleteVinyl={deleteVinyl}
             />
           }
         />
         <Route
           exact
           path="/home"
-          element={currentUser ? <LanderPage /> : <NotAuthorized />}
+          element={
+            currentUser ? (
+              <LanderPage currentUser={currentUser} />
+            ) : (
+              <NotAuthorized />
+            )
+          }
         />
         <Route
           exact

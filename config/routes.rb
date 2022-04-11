@@ -1,15 +1,21 @@
 Rails.application.routes.draw do
   resources :tracks
-  resources :albums , only: [:index, :show, :create] do
+  resources :albums , only: [:index, :show, :create, :destroy] do
     resources :reviews
   end
-  # resources :reviews 
+  resources :reviews, only: [:create, :show]
   resources :vinyls
-  resources :users, only: [:index, :show, :update, :destroy, :create]
+  
+  resources :users, only: [:index, :show, :update, :destroy, :create] do
+    resources :albums, only: [:index]
+  end
 
   post '/login', to: 'sessions#login'
   delete '/logout', to: 'sessions#logout'
   get '/authorized_user', to: 'users#show'
+
+
+
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

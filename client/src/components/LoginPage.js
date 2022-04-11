@@ -28,7 +28,6 @@ function LoginPage({ setCurrentUser, setIsAuthenticated }) {
             res.json().then((user) => {
               setIsAuthenticated(true);
               setCurrentUser(user);
-
               navigate("/home");
             });
           } else {

@@ -6,6 +6,12 @@ import "../App.css";
 import { Button } from "antd";
 
 function AlbumCollectionCard({ album }) {
+  const deleteVinyl = () => {
+    fetch(`/albums/${album.id}`, {
+      method: "DELETE",
+    });
+    window.location.reload();
+  };
   return (
     <Card link={true}>
       <img src={`${album.album_image}`} alt={album.artist_name} size="small" />
@@ -22,6 +28,7 @@ function AlbumCollectionCard({ album }) {
         <Link to={`/album/${album.id}/view`}>
           <Button>View Album</Button>
         </Link>
+        <Button onClick={deleteVinyl}>Remove</Button>
       </Card.Content>
     </Card>
   );

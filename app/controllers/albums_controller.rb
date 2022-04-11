@@ -3,12 +3,29 @@ class AlbumsController < ApplicationController
 	rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
 
     def index
-        render json: Album.all, status: :ok
+        if params[:user_id]
+            user = User.find(params[:user_id])
+            albums = user.albums
+        else
+            albums = Album.all
+        end
+        render json: albums
     end
+    
+    # def user_album
+    #     if params[:user_id]
+    #         user = User.find(params[:user_id])
+    #         albums = user.albums
+    #     else
+    #         albums = Album.all
+    #     end
+    #     render json: albums, include: :user
+    # end 
 
     def show
-        render json: Album.find(params[:id]), status: :ok
-    end
+        album = Album.find(params[:id])
+        render json: album
+      end
 
     def create
         album = Album.create(album_params)
@@ -16,7 +33,7 @@ class AlbumsController < ApplicationController
     end
 
     def destroy
-        album = Album.find!(params[:id])
+        album = Album.find(params[:id])
         album.destroy
         head :no_content
     end
@@ -24,7 +41,7 @@ class AlbumsController < ApplicationController
     private
 
     def album_params
-        params.permit(:deezer_album_id, :album_image, :album_name, :artist_id, :genre, :num_tracks, :artist_image, :artist_name, :deezer_artist_id)
+        params.permit(:deezer_album_id, :album_image, :album_name, :artist_id, :genre, :num_tracks, :artist_image, :artist_name, :deezer_artist_id, :user_id)
     end
 
     def render_unprocessable_entity(invalid)

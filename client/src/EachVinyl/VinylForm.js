@@ -35,6 +35,7 @@ function VinylForm({ addNewReview, setNewRating, setNewReview }) {
             htmlType="submit"
             shape="round"
             onClick={addNewReview}
+            style={{ marginBottom: "25px" }}
           >
             Submit
           </Button>

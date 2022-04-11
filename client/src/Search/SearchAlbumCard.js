@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Card } from "semantic-ui-react";
 
-function SearchAlbumCard({ album }) {
+function SearchAlbumCard({ album, currentUser }) {
   function handleAddToCollection(e) {
     e.preventDefault();
     const newAlbum = {
@@ -13,6 +13,7 @@ function SearchAlbumCard({ album }) {
       num_tracks: album.nb_tracks,
       artist_name: album.artist.name,
       artist_image: album.artist.picture_xl,
+      user_id: currentUser?.id,
     };
     fetch("/albums", {
       method: "POST",
@@ -23,8 +24,8 @@ function SearchAlbumCard({ album }) {
     })
       .then((r) => r.json())
       .then(console.log(newAlbum));
+    window.location.reload();
   }
-
   return (
     <Card>
       <img src={`${album.cover_xl}`} alt={album.artist.name} size="small" />

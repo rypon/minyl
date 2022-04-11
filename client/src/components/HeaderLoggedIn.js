@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 const { Header } = Layout;
 const { SubMenu } = Menu;
 
-function HeaderLoggedIn({ handleLogout, currentUser }) {
+function HeaderLoggedIn({ handleLogout, currentUser, handleCollection }) {
   const [state, setState] = useState("");
 
   function handleClick(e) {
@@ -48,7 +48,10 @@ function HeaderLoggedIn({ handleLogout, currentUser }) {
             theme="dark"
           >
             <Link to="/collection">
-              <Menu.Item key="mail" icon={<CustomerServiceOutlined />}>
+              <Menu.Item
+                key="mail"
+                icon={<CustomerServiceOutlined onClick={handleCollection} />}
+              >
                 My Collection
               </Menu.Item>
             </Link>

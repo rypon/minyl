@@ -35,6 +35,7 @@ function AlbumCollectionPage({ albumCollection, albumId }) {
           <AlbumCollectionContainer
             albumCollection={albumCollection}
             albumId={albumId}
+            // deleteVinyl={deleteVinyl}
           />
         </Col>
         <Col span={2}> </Col>

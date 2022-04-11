@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Input, InputNumber } from "antd";
+import { Row, Col } from "antd";
 import { useParams } from "react-router-dom";
 import "../App.css";
 import VinylForm from "./VinylForm";
+import VinylDisplayReview from "./VinylDisplayReview";
 
 function Vinyl({ currentUser }) {
   const [vinyl, setVinyl] = useState(null);
@@ -77,6 +78,9 @@ function Vinyl({ currentUser }) {
           setNewReview={setNewReview}
           setNewRating={setNewRating}
         />
+      </Row>
+      <Row align="center">
+        <VinylDisplayReview currentUser={currentUser} />
       </Row>
     </div>
   );
