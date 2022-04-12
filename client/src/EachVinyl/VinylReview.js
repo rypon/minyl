@@ -5,7 +5,7 @@ import "../App.css";
 import VinylForm from "./VinylForm";
 import VinylDisplayReview from "./VinylDisplayReview";
 
-function Vinyl({ currentUser }) {
+function Vinyl({ currentUser, albumCollection }) {
   const [vinyl, setVinyl] = useState(null);
   const { id } = useParams();
 
@@ -14,8 +14,6 @@ function Vinyl({ currentUser }) {
       .then((r) => r.json())
       .then((data) => setVinyl(data));
   }, [id]);
-
-  console.log(vinyl);
 
   const [newReview, setNewReview] = useState("");
   const [newRating, setNewRating] = useState(0);
@@ -80,7 +78,10 @@ function Vinyl({ currentUser }) {
         />
       </Row>
       <Row align="center">
-        <VinylDisplayReview currentUser={currentUser} />
+        <VinylDisplayReview
+          currentUser={currentUser}
+          albumCollection={albumCollection}
+        />
       </Row>
     </div>
   );

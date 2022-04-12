@@ -13,8 +13,8 @@ class ReviewsController < ApplicationController
     # end
 
     def index
-        if params[:albums_id]
-          album = Album.find(params[:albums_id])
+        if params[:album_id]
+          album = Album.find(params[:album_id])
           reviews = album.reviews
         else
           reviews = Review.all

@@ -18,7 +18,6 @@ function App() {
   const [currentUser, setCurrentUser] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [albumCollection, setAlbumCollection] = useState([]);
-  const [currentUserId, setCurrentUserId] = useState("");
   const navigate = useNavigate();
   //Authenticate
   useEffect(() => {
@@ -41,7 +40,6 @@ function App() {
     });
     setCurrentUser(null);
     setIsAuthenticated(false);
-    setCurrentUserId("");
     navigate("/");
   };
 
@@ -53,7 +51,6 @@ function App() {
           setAlbumCollection(data);
         });
   }, [currentUser]);
-
   // const albumID = albumCollection?.map((album) => album);
   // console.log(albumID);
 
@@ -88,7 +85,6 @@ function App() {
           element={
             <LoginPage
               setCurrentUser={setCurrentUser}
-              setCurrentUserId={setCurrentUserId}
               setIsAuthenticated={setIsAuthenticated}
             />
           }
@@ -128,7 +124,12 @@ function App() {
         <Route
           exact
           path={`/album/:id/review`}
-          element={<VinylReview currentUser={currentUser} />}
+          element={
+            <VinylReview
+              currentUser={currentUser}
+              albumCollection={albumCollection}
+            />
+          }
         />
         <Route
           exact
