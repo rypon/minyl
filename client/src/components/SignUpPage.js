@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "antd/dist/antd.css";
 import "../App.css";
 import { Form, Input, Button } from "antd";
@@ -6,7 +6,7 @@ import { Row, Col } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 
-function SignUpPage() {
+function SignUpPage({ handleLogout, currentUser }) {
   const [newUsername, setNewUsername] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newEmail, setNewEmail] = useState("");
@@ -16,6 +16,10 @@ function SignUpPage() {
   const onFinish = (values) => {
     console.log("Success:", values);
   };
+
+  useEffect(() => {
+    if (currentUser) handleLogout();
+  }, [currentUser]);
 
   function onSubmit(e) {
     e.preventDefault();

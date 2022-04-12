@@ -11,7 +11,7 @@ function CurrentTopAlbumsCard({ album }) {
           <span className="released">{album.artist.name}</span>
         </Card.Meta>
       </Card.Content>
-      <Button onClick={() => console.log(album)}>Add to Collection</Button>
+      {/* <Button onClick={() => console.log(album)}>Add to Collection</Button> */}
     </Card>
   );
 }

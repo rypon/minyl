@@ -10,7 +10,7 @@ function LanderPage({ currentUser }) {
   const [currentAlbums, setCurrentAlbums] = useState([]);
 
   useEffect(() => {
-    fetch("https://api.deezer.com/chart/top?limit=50")
+    fetch("https://api.deezer.com/chart/top?limit=10")
       .then((res) => res.json())
       .then((data) => {
         setCurrentAlbums(data.albums.data);

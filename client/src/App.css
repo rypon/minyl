@@ -1,5 +1,15 @@
 @import 'antd/dist/antd.css';
 
+.test{
+  /* width: 250px;
+  height: 250px; */
+  background: 
+	radial-gradient(circle at 86% 74%, rgba(120,0,255,1), rgba(0,0,0,0));
+  /* filter: contrast(100%) brightness(100%); */
+}
+  
+
+
 .ui.button.moreButton {
     border-radius: 18px;
     width: 200px;
@@ -16,3 +26,34 @@
     height: 175px;
     width: 500px;
   }
+
+  .container-fluid {
+    margin-Top: 40px;
+    /* max-width: 1200px; */
+    /* padding: 15px; */
+  }
+
+ .content {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 0 70px;
+  }
+
+  .home-header {
+    font-size: 64px;
+  }
+
+  .home-text {
+    font-size: 32px;
+  }
+
+  /* Login and Logout buttons */
+
+  .button {
+    justify-content: center;
+    font-family: 'Lato','Helvetica Neue',Arial,Helvetica,sans-serif;
+
+  }
+  

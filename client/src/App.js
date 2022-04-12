@@ -55,7 +55,7 @@ function App() {
   // console.log(albumID);
 
   return (
-    <div className="App">
+    <div>
       <div>
         {currentUser ? (
           <HeaderLoggedIn
@@ -75,8 +75,6 @@ function App() {
               handleLogout={handleLogout}
               currentUser={currentUser}
               setCurrentUser={setCurrentUser}
-              isAuthenticated={isAuthenticated}
-              setIsAuthenticated={setIsAuthenticated}
             />
           }
         />
@@ -86,6 +84,8 @@ function App() {
             <LoginPage
               setCurrentUser={setCurrentUser}
               setIsAuthenticated={setIsAuthenticated}
+              handleLogout={handleLogout}
+              currentUser={currentUser}
             />
           }
         />
