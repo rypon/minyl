@@ -3,18 +3,17 @@ import AlbumCollectionCard from "./AlbumCollectionCard";
 
 import { Card } from "semantic-ui-react";
 
-function AlbumCollectionContainer({ albumCollection, deleteVinyl }) {
-  console.log(albumCollection);
+function AlbumCollectionContainer({ albumCollection, setCount, count }) {
   const collection = albumCollection?.map((album) => (
     <AlbumCollectionCard
       key={album.id}
       album={album}
       artist={album.artist_name}
-      deleteVinyl={deleteVinyl}
+      albumCollection={albumCollection}
+      setCount={setCount}
+      count={count}
     />
   ));
-
-  console.log(collection);
 
   return (
     <div>

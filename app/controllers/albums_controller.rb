@@ -2,6 +2,8 @@ class AlbumsController < ApplicationController
     wrap_parameters format: []
 	rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
 
+    require 'rest-client'
+    require 'json'
     def index
         if params[:user_id]
             user = User.find(params[:user_id])
@@ -12,15 +14,7 @@ class AlbumsController < ApplicationController
         render json: albums
     end
     
-    # def user_album
-    #     if params[:user_id]
-    #         user = User.find(params[:user_id])
-    #         albums = user.albums
-    #     else
-    #         albums = Album.all
-    #     end
-    #     render json: albums, include: :user
-    # end 
+
 
     def show
         album = Album.find(params[:id])

@@ -3,13 +3,20 @@ import SearchAlbumCard from "./SearchAlbumCard";
 
 import { Card } from "semantic-ui-react";
 
-function SearchAlbumContainer({ searchAlbum, currentUser }) {
+function SearchAlbumContainer({
+  searchAlbum,
+  currentUser,
+  albumCollection,
+  setAlbumCollection,
+}) {
   const searchCards = searchAlbum?.map((album) => (
     <SearchAlbumCard
       key={album.id}
       album={album}
       artist={album.artist.name}
       currentUser={currentUser}
+      albumCollection={albumCollection}
+      setAlbumCollection={setAlbumCollection}
     />
   ));
 

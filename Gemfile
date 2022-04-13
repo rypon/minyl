@@ -51,3 +51,5 @@ gem 'bcrypt', '3.1.12'
 gem 'byebug'
 
 gem 'rack-cors', :require => 'rack/cors'
+
+gem 'rest-client'

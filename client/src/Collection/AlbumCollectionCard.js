@@ -3,14 +3,12 @@ import { Dropdown, Card } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 import "../App.css";
-import { Button } from "antd";
 
-function AlbumCollectionCard({ album }) {
+function AlbumCollectionCard({ album, setCount, count }) {
   const deleteVinyl = () => {
     fetch(`/albums/${album.id}`, {
       method: "DELETE",
-    });
-    window.location.reload();
+    }).then(setCount(count + 1));
   };
 
   return (
@@ -40,17 +38,6 @@ function AlbumCollectionCard({ album }) {
             <Dropdown.Item icon="trash" text="Delete" onClick={deleteVinyl} />
           </Dropdown.Menu>
         </Dropdown>
-        {/* 
-        <Menu size="large" style={{ width: "91px" }}>
-          <Dropdown text="More" options={options} simple item />
-        </Menu> */}
-        {/* <Link to={`/album/${album.id}/review`}>
-          <Button>Write Review</Button>
-        </Link>
-        <Link to={`/album/${album.id}/view`}>
-          <Button>View Album</Button>
-        </Link>
-        <Button onClick={deleteVinyl}>Remove</Button> */}
       </Card.Content>
     </Card>
   );

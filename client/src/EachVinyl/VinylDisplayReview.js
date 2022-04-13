@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import VinylEachReview from "./VinylEachReview";
 import { Row, Col } from "antd";
 import "../App.css";
 
-function VinylDisplayReview({ currentUser, albumCollection }) {
-  const [getReviews, setGetReviews] = useState([]);
+function VinylDisplayReview({ setGetReviews, getReviews }) {
   const { id } = useParams();
 
   useEffect(() => {
@@ -14,7 +13,6 @@ function VinylDisplayReview({ currentUser, albumCollection }) {
         .then((r) => r.json())
         .then((data) => setGetReviews(data));
   }, [id]);
-  console.log(getReviews);
   const reviews = getReviews?.map(
     (review) => <VinylEachReview key={review.id} review={review} />
     // console.log(review)

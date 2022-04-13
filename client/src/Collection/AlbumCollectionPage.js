@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col } from "antd";
 import "antd/dist/antd.css";
 import "../App.css";
 import AlbumCollectionContainer from "./AlbumCollectionContainer";
-function AlbumCollectionPage({ albumCollection, albumId }) {
+function AlbumCollectionPage({
+  albumCollection,
+  albumId,
+  currentUser,
+  setAlbumCollection,
+}) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (currentUser)
+      fetch(`http://localhost:4000/users/${currentUser.id}/albums`)
+        .then((res) => res.json())
+        .then((data) => {
+          setAlbumCollection(data);
+          setCount(0);
+        });
+  }, [currentUser, count]);
+
   return (
     <div>
       <Row align="center">
@@ -35,7 +51,9 @@ function AlbumCollectionPage({ albumCollection, albumId }) {
           <AlbumCollectionContainer
             albumCollection={albumCollection}
             albumId={albumId}
-            // deleteVinyl={deleteVinyl}
+            currentUser={currentUser}
+            setCount={setCount}
+            count={count}
           />
         </Col>
         <Col span={2}> </Col>

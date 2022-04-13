@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
     skip_before_action :authorized_user, only: :create
 
+    require 'rest-client'
+    require 'json'
     def index
         render json: User.all, status: :ok
     end
@@ -32,6 +34,7 @@ class UsersController < ApplicationController
             render json: { error: "User not found" }, status: :not_found
         end
     end
+
 
     private
 

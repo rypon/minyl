@@ -12,8 +12,8 @@ Rails.application.routes.draw do
 
   post '/login', to: 'sessions#login'
   delete '/logout', to: 'sessions#logout'
-  get '/authorized_user', to: 'users#show'
-
+  get '/authorized_user', to: 'users#show'  
+  get '/collection', to: 'users#get_user_albums'
 
 
 

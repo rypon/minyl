@@ -11,9 +11,7 @@ const ItemExampleItems = ({ review }) => (
 
       <Item.Content style={{ width: "500px" }}>
         <Item.Header as="a">Rating: {review.review_rating}</Item.Header>
-        {/* <Item.Meta>{review.review_rating}</Item.Meta> */}
         <Item.Description>{review.review_text}</Item.Description>
-        {/* <Item.Extra>Additional Details</Item.Extra> */}
       </Item.Content>
     </Item>
   </Item.Group>

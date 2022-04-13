@@ -15,6 +15,7 @@ function Vinyl({ currentUser, albumCollection }) {
       .then((data) => setVinyl(data));
   }, [id]);
 
+  const [getReviews, setGetReviews] = useState([]);
   const [newReview, setNewReview] = useState("");
   const [newRating, setNewRating] = useState(0);
 
@@ -32,7 +33,8 @@ function Vinyl({ currentUser, albumCollection }) {
       },
       body: JSON.stringify(review),
     }).then((r) => r.json());
-    window.location.reload();
+    const newReviewArr = [...getReviews, review];
+    setGetReviews(newReviewArr);
   }
 
   return (
@@ -79,6 +81,8 @@ function Vinyl({ currentUser, albumCollection }) {
       </Row>
       <Row align="center">
         <VinylDisplayReview
+          setGetReviews={setGetReviews}
+          getReviews={getReviews}
           currentUser={currentUser}
           albumCollection={albumCollection}
         />

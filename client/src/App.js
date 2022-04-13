@@ -43,14 +43,14 @@ function App() {
     navigate("/");
   };
 
-  useEffect(() => {
-    if (currentUser)
-      fetch(`http://localhost:4000/users/${currentUser.id}/albums`)
-        .then((res) => res.json())
-        .then((data) => {
-          setAlbumCollection(data);
-        });
-  }, [currentUser]);
+  // useEffect(() => {
+  //   if (currentUser)
+  //     fetch(`http://localhost:4000/users/${currentUser.id}/albums`)
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         setAlbumCollection(data);
+  //       });
+  // }, [currentUser]);
   // const albumID = albumCollection?.map((album) => album);
   // console.log(albumID);
 
@@ -106,6 +106,7 @@ function App() {
             <AlbumCollectionPage
               albumCollection={albumCollection}
               setAlbumCollection={setAlbumCollection}
+              currentUser={currentUser}
               // deleteVinyl={deleteVinyl}
             />
           }
@@ -115,7 +116,11 @@ function App() {
           path="/home"
           element={
             currentUser ? (
-              <LanderPage currentUser={currentUser} />
+              <LanderPage
+                currentUser={currentUser}
+                albumCollection={albumCollection}
+                setAlbumCollection={setAlbumCollection}
+              />
             ) : (
               <NotAuthorized />
             )
