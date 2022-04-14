@@ -45,7 +45,7 @@ function StarterPage({ handleLogout, currentUser, setCurrentUser }) {
               size="large"
               shape="round"
             >
-              Signup Test
+              Signup
             </Button>
           </Link>
         </Col>

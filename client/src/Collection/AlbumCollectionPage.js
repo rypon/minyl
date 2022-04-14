@@ -3,6 +3,7 @@ import { Row, Col } from "antd";
 import "antd/dist/antd.css";
 import "../App.css";
 import AlbumCollectionContainer from "./AlbumCollectionContainer";
+import { Empty } from "antd";
 function AlbumCollectionPage({
   albumCollection,
   albumId,
@@ -19,6 +20,8 @@ function AlbumCollectionPage({
           setCount(0);
         });
   }, [currentUser, count]);
+
+  console.log(albumCollection);
 
   return (
     <div>
@@ -48,13 +51,17 @@ function AlbumCollectionPage({
         <Col span={2}> </Col>
 
         <Col md={20}>
-          <AlbumCollectionContainer
-            albumCollection={albumCollection}
-            albumId={albumId}
-            currentUser={currentUser}
-            setCount={setCount}
-            count={count}
-          />
+          {albumCollection.length === 0 ? (
+            <Empty description={"Collection is empty!"} />
+          ) : (
+            <AlbumCollectionContainer
+              albumCollection={albumCollection}
+              albumId={albumId}
+              currentUser={currentUser}
+              setCount={setCount}
+              count={count}
+            />
+          )}
         </Col>
         <Col span={2}> </Col>
       </Row>

@@ -43,17 +43,6 @@ function App() {
     navigate("/");
   };
 
-  // useEffect(() => {
-  //   if (currentUser)
-  //     fetch(`http://localhost:4000/users/${currentUser.id}/albums`)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setAlbumCollection(data);
-  //       });
-  // }, [currentUser]);
-  // const albumID = albumCollection?.map((album) => album);
-  // console.log(albumID);
-
   return (
     <div>
       <div>

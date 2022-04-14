@@ -7,7 +7,9 @@
 	radial-gradient(circle at 86% 74%, rgba(120,0,255,1), rgba(0,0,0,0));
   /* filter: contrast(100%) brightness(100%); */
 }
-  
+p {
+  word-wrap: break-word;
+}
 
 
 .ui.button.moreButton {

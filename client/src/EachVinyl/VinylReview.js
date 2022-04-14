@@ -73,19 +73,23 @@ function Vinyl({ currentUser, albumCollection }) {
         </Col>
       </Row>
       <Row align="center">
-        <VinylForm
-          addNewReview={addNewReview}
-          setNewReview={setNewReview}
-          setNewRating={setNewRating}
-        />
+        <Col flex="0 1 900px">
+          <VinylForm
+            addNewReview={addNewReview}
+            setNewReview={setNewReview}
+            setNewRating={setNewRating}
+          />
+        </Col>
       </Row>
       <Row align="center">
-        <VinylDisplayReview
-          setGetReviews={setGetReviews}
-          getReviews={getReviews}
-          currentUser={currentUser}
-          albumCollection={albumCollection}
-        />
+        <Col flex="0 1 900px">
+          <VinylDisplayReview
+            setGetReviews={setGetReviews}
+            getReviews={getReviews}
+            currentUser={currentUser}
+            albumCollection={albumCollection}
+          />
+        </Col>
       </Row>
     </div>
   );

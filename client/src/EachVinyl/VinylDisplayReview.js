@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import VinylEachReview from "./VinylEachReview";
 import { Row, Col } from "antd";
 import "../App.css";
+import { Empty } from "antd";
 
 function VinylDisplayReview({ setGetReviews, getReviews }) {
   const { id } = useParams();
@@ -19,9 +20,16 @@ function VinylDisplayReview({ setGetReviews, getReviews }) {
   );
 
   return (
-    <div style={{ width: "30%" }}>
+    <div style={{ width: "100%" }}>
       <Row gutter={[16, 16]}>
-        <Col span={24}>{reviews}</Col>
+        {/* <Col span={24}>{reviews}</Col> */}
+        <Col span={24}>
+          {getReviews.length === 0 ? (
+            <Empty description={"No reviews - yet!"} />
+          ) : (
+            reviews
+          )}
+        </Col>
       </Row>
     </div>
   );

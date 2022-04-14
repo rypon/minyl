@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "antd/dist/antd.css";
 import "../App.css";
-import { Input, Button, InputNumber } from "antd";
+import { Input, Button, InputNumber, Divider } from "antd";
 import { Row, Col } from "antd";
 const { TextArea } = Input;
 function VinylForm({ addNewReview, setNewRating, setNewReview }) {
@@ -11,36 +11,38 @@ function VinylForm({ addNewReview, setNewRating, setNewReview }) {
 
   return (
     <div>
-      <Row align="center">
-        <p style={{ marginRight: "10px" }}>Write a Review</p>
-        <Col>
-          <TextArea
-            style={{ height: 120, width: 500 }}
-            placeholder="Write a Reivew"
-            onChange={(e) => setNewReview(e.target.value)}
-          />
+      <div>
+        <h3>Write a Review</h3>
+        <TextArea
+          style={{ height: 120, width: 900 }}
+          placeholder="Write a Reivew"
+          onChange={(e) => setNewReview(e.target.value)}
+        />
+        <h3>Rating</h3>
+        <InputNumber
+          min={1}
+          max={10}
+          stringMode={true}
+          onChange={onChange}
+          placeholder="Rating"
+        />
+      </div>
+      <div style={{ textAlign: "center" }}>
+        <Button
+          type="primary"
+          htmlType="submit"
+          shape="round"
+          onClick={addNewReview}
+          style={{ marginTop: "15px" }}
+        >
+          Submit
+        </Button>
+        <Col flex="auto">
+          <Divider orientationMargin={50}>
+            <h1>Reviews & Ratings</h1>
+          </Divider>
         </Col>
-      </Row>
-      <Row>
-        Rating
-        <Col>
-          <InputNumber min={1} max={10} stringMode={true} onChange={onChange} />
-        </Col>
-      </Row>
-      <Row align="center">
-        <Col>
-          {" "}
-          <Button
-            type="primary"
-            htmlType="submit"
-            shape="round"
-            onClick={addNewReview}
-            style={{ marginBottom: "25px" }}
-          >
-            Submit
-          </Button>
-        </Col>
-      </Row>
+      </div>
     </div>
   );
 }
