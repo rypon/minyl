@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "antd/dist/antd.css";
 import "../App.css";
 import { Form, Input, Button, Spin } from "antd";
-import { Row, Col } from "antd";
+import { Row, Col, message } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 
@@ -16,6 +16,18 @@ function SignUpPage({ handleLogout, currentUser }) {
   useEffect(() => {
     if (currentUser) handleLogout();
   }, [currentUser]);
+
+  const loading = () => {
+    const hide = message.loading("One moment please...", 0);
+    // Dismiss manually and asynchronously
+    setTimeout(hide, 2500);
+    setTimeout(() => navigate("/login"), 2500);
+  };
+
+  const success = () => {
+    const success = message.success("Account created successfully!", 0);
+    setTimeout(success, 5000);
+  };
 
   function onSubmit() {
     // e.preventDefault();
@@ -34,8 +46,9 @@ function SignUpPage({ handleLogout, currentUser }) {
           },
           body: JSON.stringify(newUser),
         }).then((r) => r.json());
-        // alert("User Created Successfully");
-        navigate("/login");
+        loading();
+        setTimeout(success, 2500);
+
         // } else {
         // alert("Password must be between 5 and 10 characters");
       }
@@ -47,6 +60,7 @@ function SignUpPage({ handleLogout, currentUser }) {
     onSubmit();
     console.log("Success:", values);
   };
+
   return (
     <div>
       <Row gutter={[8, 16]}>
@@ -144,23 +158,6 @@ function SignUpPage({ handleLogout, currentUser }) {
                 placeholder="Password"
               />
             </Form.Item>
-
-            {/* <Form.Item
-              name="email"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your Email!",
-                },
-              ]}
-              onChange={(e) => setNewEmail(e.target.value)}
-            >
-              <Input
-                prefix={<LockOutlined className="site-form-item-icon" />}
-                type="email"
-                placeholder="email"
-              />
-            </Form.Item> */}
 
             <Form.Item
               style={{
