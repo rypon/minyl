@@ -52,7 +52,7 @@ function LanderPage({ currentUser, albumCollection, setAlbumCollection }) {
               fontSize: "32px",
             }}
           >
-            Today's hottest music
+            Search for your vinyls
           </h2>
         </Col>
       </Row>

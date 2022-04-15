@@ -92,7 +92,12 @@ function App() {
         />
         <Route
           path="/profile"
-          element={<Profile currentUser={currentUser} />}
+          element={
+            <Profile
+              currentUser={currentUser}
+              albumCollection={albumCollection}
+            />
+          }
         />
         <Route
           path="/collection"

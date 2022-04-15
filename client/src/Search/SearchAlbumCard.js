@@ -1,5 +1,8 @@
-import React from "react";
-import { Button, Card } from "semantic-ui-react";
+import React, { useState } from "react";
+
+import { Dropdown, Button, Card } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import { Modal, message } from "antd";
 
 function SearchAlbumCard({
   album,
@@ -27,13 +30,36 @@ function SearchAlbumCard({
       },
       body: JSON.stringify(newAlbum),
     }).then((r) => r.json());
+    success();
     // const newArray = [...albumCollection, newAlbum];
     // setAlbumCollection(newArray);
     // console.log(albumCollection);
   }
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+  const success = () => {
+    const success = message.success("Vinyl Added!", 0);
+    setTimeout(success, 2500);
+  };
   return (
-    <Card>
+    // <Card>
+    //   <img src={`${album.cover_xl}`} alt={album.artist.name} size="small" />
+    //   <Card.Content>
+    //     <Card.Header>{album.title}</Card.Header>
+    //     <Card.Meta>
+    //       <span className="released">{album.artist.name}</span>
+    //     </Card.Meta>
+    //   </Card.Content>
+    //   <Button onClick={handleAddToCollection}>Add to Collection</Button>
+    // </Card>
+    <Card link={true}>
       <img src={`${album.cover_xl}`} alt={album.artist.name} size="small" />
       <Card.Content>
         <Card.Header>{album.title}</Card.Header>
@@ -41,7 +67,36 @@ function SearchAlbumCard({
           <span className="released">{album.artist.name}</span>
         </Card.Meta>
       </Card.Content>
-      <Button onClick={handleAddToCollection}>Add to Collection</Button>
+
+      <Card.Content>
+        <Dropdown text="Options" direction="right">
+          <Dropdown.Menu>
+            <Dropdown.Item text="Add" onClick={handleAddToCollection} />
+            <Dropdown.Item text="Listen" onClick={showModal} />
+          </Dropdown.Menu>
+        </Dropdown>
+      </Card.Content>
+      <Modal
+        title="Play some tracks"
+        centered={true}
+        visible={isModalVisible}
+        // onOk={handleOk}
+        onCancel={handleCancel}
+        footer={null}
+        width={1000}
+      >
+        <div style={{ textAlign: "center" }}>
+          <iframe
+            title="deezer-widget"
+            src={`https://widget.deezer.com/widget/dark/album/${album?.id}`}
+            width="100%"
+            height="300"
+            frameBorder="0"
+            allowtransparency="true"
+            allow="encrypted-media; clipboard-write"
+          ></iframe>
+        </div>
+      </Modal>
     </Card>
   );
 }

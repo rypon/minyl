@@ -21,8 +21,6 @@ function AlbumCollectionPage({
         });
   }, [currentUser, count]);
 
-  console.log(albumCollection);
-
   return (
     <div>
       <Row align="center">

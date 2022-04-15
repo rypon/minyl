@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Dropdown, Card } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import { Modal } from "antd";
+import { Modal, message } from "antd";
 
 import "../App.css";
 
@@ -10,6 +10,7 @@ function AlbumCollectionCard({ album, setCount, count }) {
     fetch(`/albums/${album.id}`, {
       method: "DELETE",
     }).then(setCount(count + 1));
+    remove();
   };
 
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -18,12 +19,12 @@ function AlbumCollectionCard({ album, setCount, count }) {
     setIsModalVisible(true);
   };
 
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
   const handleCancel = () => {
     setIsModalVisible(false);
+  };
+  const remove = () => {
+    const remove = message.error("Vinyl Removed!", 0);
+    setTimeout(remove, 2500);
   };
 
   return (

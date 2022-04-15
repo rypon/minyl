@@ -14,16 +14,14 @@ function VinylDisplayReview({ setGetReviews, getReviews }) {
         .then((r) => r.json())
         .then((data) => setGetReviews(data));
   }, [id]);
-  const reviews = getReviews?.map(
-    (review) => <VinylEachReview key={review.id} review={review} />
-    // console.log(review)
-  );
+  const reviews = getReviews?.map((review) => (
+    <VinylEachReview key={review.id} review={review} />
+  ));
 
   return (
     <div style={{ width: "100%" }}>
       <Row gutter={[16, 16]}>
-        {/* <Col span={24}>{reviews}</Col> */}
-        <Col span={24}>
+        <Col span={24} style={{ paddingBottom: "25px" }}>
           {getReviews.length === 0 ? (
             <Empty description={"No reviews - yet!"} />
           ) : (

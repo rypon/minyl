@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Row, Col } from "antd";
 import { useParams } from "react-router-dom";
 import "../App.css";
-import VinylReview from "./VinylReview";
-import Vinyl from "./VinylReview";
 
 function VinylView({ currentUser }) {
   const [vinyl, setVinyl] = useState(null);

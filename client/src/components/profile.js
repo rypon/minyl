@@ -1,11 +1,22 @@
 import React from "react";
-import { Card, Icon, Grid, Image } from "semantic-ui-react";
+import { Card, Grid } from "semantic-ui-react";
+import moment from "moment";
 
-function profile({ currentUser }) {
+function profile({ currentUser, albumCollection }) {
   const date = new Date(currentUser.created_at);
   console.log(date);
-  // const convertedDate = moment(date).format("DD-MM-YYYY");
-  // console.log(convertedDate);
+  const convertedDate = moment(date).format("MMMM Do, YYYY");
+  console.log(convertedDate);
+
+  function vinylCountMessage() {
+    if (albumCollection.length === 0) {
+      return "Your collection is empty!";
+    } else if (albumCollection.length === 1) {
+      return "You have 1 vinyl in your collection!";
+    } else {
+      return `you have ${albumCollection.length} vinyls in your collection!`;
+    }
+  }
   return (
     <div style={{ marginTop: "25px" }}>
       <Grid centered>
@@ -13,21 +24,8 @@ function profile({ currentUser }) {
           <Card centered fluid>
             <Card.Content>
               <h1>Hello, {currentUser.username}!</h1>
-
-              <Card.Meta>
-                <span className="date">
-                  {/* Joined on: {currentUser.created_at.toDateString()} */}
-                </span>
-              </Card.Meta>
-              <Card.Description>
-                Matthew is a musician living in Nashville.
-              </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-              <a>
-                <Icon name="user" />
-                22 Friends
-              </a>
+              <h3>Joined on: {convertedDate}</h3>
+              <h3>{vinylCountMessage()}</h3>
             </Card.Content>
           </Card>
         </Grid.Column>

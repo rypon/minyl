@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import "antd/dist/antd.css";
 import "../App.css";
 import { Input, Button, InputNumber, Divider } from "antd";
-import { Row, Col } from "antd";
+import { Col } from "antd";
 const { TextArea } = Input;
 function VinylForm({ addNewReview, setNewRating, setNewReview }) {
   function onChange(value) {
