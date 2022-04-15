@@ -62,16 +62,18 @@ function HeaderLoggedIn({ handleLogout, currentUser, handleCollection }) {
             >
               {/* <Menu.ItemGroup title="Item 1"> */}
               <Menu.Item key="setting:1">
-                <div>
-                  <Avatar
-                    style={{
-                      marginRight: "10px",
-                    }}
-                    size="small"
-                    icon={<UserOutlined />}
-                  />
-                  Profile
-                </div>
+                <Link to="/profile">
+                  <div>
+                    <Avatar
+                      style={{
+                        marginRight: "10px",
+                      }}
+                      size="small"
+                      icon={<UserOutlined />}
+                    />
+                    Profile
+                  </div>
+                </Link>
               </Menu.Item>
               <Menu.Item key="setting:2" onClick={handleLogout}>
                 Logout

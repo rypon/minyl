@@ -4,6 +4,7 @@ import LoginPage from "./components/LoginPage";
 import SignUpPage from "./components/SignUpPage";
 import StarterPage from "./components/StarterPage";
 import About from "./components/About";
+import Profile from "./components/profile";
 import { useNavigate } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import LanderPage from "./components/LanderPage";
@@ -88,6 +89,10 @@ function App() {
               isAuthenticated={isAuthenticated}
             />
           }
+        />
+        <Route
+          path="/profile"
+          element={<Profile currentUser={currentUser} />}
         />
         <Route
           path="/collection"

@@ -6,7 +6,7 @@ import { Row, Col } from "antd";
 import { Link } from "react-router-dom";
 import HomeCarousel from "./HomeCarousel";
 
-function StarterPage({ handleLogout, currentUser, setCurrentUser }) {
+function StarterPage({ handleLogout, currentUser }) {
   useEffect(() => {
     if (currentUser) handleLogout();
   }, [currentUser]);
