@@ -1,4 +1,6 @@
-import "antd/dist/antd.css";
+// import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
+
 import "../App.css";
 import React, { useState, useEffect } from "react";
 import SearchAlbumContainer from "../Search/SearchAlbumContainer";

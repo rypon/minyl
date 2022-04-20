@@ -1,18 +1,12 @@
 import React from "react";
 
-import "antd/dist/antd.css";
+// import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
+
 import "../App.css";
-import { Carousel, Button } from "antd";
+import { Carousel } from "antd";
 
 function HomeCarousel() {
-  const contentStyle = {
-    height: "300px",
-    color: "#fff",
-    lineHeight: "300px",
-    textAlign: "center",
-    background: "#364d79",
-  };
-
   const items = [
     {
       key: "1",

@@ -1,15 +1,8 @@
 import React, { useState } from "react";
-
-import { Dropdown, Button, Card } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Dropdown, Card } from "semantic-ui-react";
 import { Modal, message } from "antd";
 
-function SearchAlbumCard({
-  album,
-  currentUser,
-  // albumCollection,
-  // setAlbumCollection,
-}) {
+function SearchAlbumCard({ album, currentUser }) {
   function handleAddToCollection(e) {
     e.preventDefault();
     const newAlbum = {
@@ -31,9 +24,6 @@ function SearchAlbumCard({
       body: JSON.stringify(newAlbum),
     }).then((r) => r.json());
     success();
-    // const newArray = [...albumCollection, newAlbum];
-    // setAlbumCollection(newArray);
-    // console.log(albumCollection);
   }
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -49,16 +39,6 @@ function SearchAlbumCard({
     setTimeout(success, 2500);
   };
   return (
-    // <Card>
-    //   <img src={`${album.cover_xl}`} alt={album.artist.name} size="small" />
-    //   <Card.Content>
-    //     <Card.Header>{album.title}</Card.Header>
-    //     <Card.Meta>
-    //       <span className="released">{album.artist.name}</span>
-    //     </Card.Meta>
-    //   </Card.Content>
-    //   <Button onClick={handleAddToCollection}>Add to Collection</Button>
-    // </Card>
     <Card link={true}>
       <img src={`${album.cover_xl}`} alt={album.artist.name} size="small" />
       <Card.Content>
@@ -80,7 +60,6 @@ function SearchAlbumCard({
         title="Play some tracks"
         centered={true}
         visible={isModalVisible}
-        // onOk={handleOk}
         onCancel={handleCancel}
         footer={null}
         width={1000}

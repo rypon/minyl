@@ -4,9 +4,7 @@ import moment from "moment";
 
 function profile({ currentUser, albumCollection }) {
   const date = new Date(currentUser.created_at);
-  console.log(date);
   const convertedDate = moment(date).format("MMMM Do, YYYY");
-  console.log(convertedDate);
 
   function vinylCountMessage() {
     if (albumCollection.length === 0) {

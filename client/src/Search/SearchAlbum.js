@@ -1,5 +1,7 @@
 import React from "react";
-import "antd/dist/antd.css";
+// import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
+
 import "../App.css";
 import { Input, Button, Tooltip } from "antd";
 import { SearchOutlined } from "@ant-design/icons";

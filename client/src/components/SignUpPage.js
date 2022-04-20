@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "antd/dist/antd.css";
+// import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
+
 import "../App.css";
 import { Form, Input, Button } from "antd";
 import { Row, Col, message } from "antd";
@@ -9,7 +11,6 @@ import { useNavigate } from "react-router-dom";
 function SignUpPage({ handleLogout, currentUser }) {
   const [newUsername, setNewUsername] = useState("");
   const [newPassword, setNewPassword] = useState("");
-  const [newEmail, setNewEmail] = useState("");
 
   const navigate = useNavigate();
 
@@ -30,11 +31,9 @@ function SignUpPage({ handleLogout, currentUser }) {
   };
 
   function onSubmit() {
-    // e.preventDefault();
     const newUser = {
       username: newUsername,
       password: newPassword,
-      email: newEmail,
       profile_image: "",
     };
     if (newUser.username !== "") {

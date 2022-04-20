@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col } from "antd";
-import "antd/dist/antd.css";
+// import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 import "../App.css";
 import AlbumCollectionContainer from "./AlbumCollectionContainer";
 import { Empty } from "antd";
@@ -13,7 +14,7 @@ function AlbumCollectionPage({
   const [count, setCount] = useState(0);
   useEffect(() => {
     if (currentUser)
-      fetch(`http://localhost:4000/users/${currentUser.id}/albums`)
+      fetch(`/users/${currentUser.id}/albums`)
         .then((res) => res.json())
         .then((data) => {
           setAlbumCollection(data);

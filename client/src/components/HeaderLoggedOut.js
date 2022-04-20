@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "antd/dist/antd.css";
+// import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 import "../App.css";
 import { Layout, Menu } from "antd";
 import { Link } from "react-router-dom";

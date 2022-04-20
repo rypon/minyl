@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
-import "antd/dist/antd.css";
+// import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
+
 import "../App.css";
 import { Button } from "antd";
 import { Row, Col } from "antd";

@@ -1,6 +1,5 @@
 import React from "react";
 import SearchAlbumCard from "./SearchAlbumCard";
-
 import { Card } from "semantic-ui-react";
 
 function SearchAlbumContainer({
