@@ -21,5 +21,4 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
-<iframe src="https://drive.google.com/file/d/1B-PWA2LLgk6j226E-TDjuNrx28miqQM-/preview" width="640" height="480" allow="autoplay"></iframe>
+
