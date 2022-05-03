@@ -1,24 +1,6 @@
-# README
+Minyl was my individual capstone project for Flatiron School that allows vinyl collectors to search thousands of albums and add them to their vinyl collection to rate, review, and listen.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Minyl utilized the Deezer API for music data, Semantic UI React / Ant Design for design components, JavaScript / React for Front end and Ruby on Rails for backend.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-
+Below is a YouTube demo walking through the full application:
+https://www.youtube.com/watch?v=lOdiQXN1tcM&ab_channel=RyanO%27Neill
