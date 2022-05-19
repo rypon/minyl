@@ -5,7 +5,7 @@ import { Row, Col } from "antd";
 import "../App.css";
 import { Empty } from "antd";
 
-function VinylDisplayReview({ setGetReviews, getReviews }) {
+function VinylDisplayReview({ setGetReviews, getReviews, currentUser }) {
   const { id } = useParams();
 
   useEffect(() => {
@@ -15,7 +15,11 @@ function VinylDisplayReview({ setGetReviews, getReviews }) {
         .then((data) => setGetReviews(data));
   }, [id]);
   const reviews = getReviews?.map((review) => (
-    <VinylEachReview key={review.id} review={review} />
+    <VinylEachReview
+      key={review.id}
+      review={review}
+      currentUser={currentUser}
+    />
   ));
 
   return (

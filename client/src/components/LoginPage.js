@@ -4,7 +4,7 @@ import "antd/dist/antd.min.css";
 
 import "../App.css";
 import { Form, Input, Button } from "antd";
-import { Row, Col } from "antd";
+import { Row, Col, message } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 
@@ -12,6 +12,11 @@ function LoginPage({ setCurrentUser, setIsAuthenticated }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  const error = () => {
+    const success = message.error("Invalid username or password!", 0);
+    setTimeout(success, 2500);
+  };
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -32,7 +37,8 @@ function LoginPage({ setCurrentUser, setIsAuthenticated }) {
               navigate("/home");
             });
           } else {
-            alert("Incorrect Username or Password");
+            error();
+            // alert("Incorrect Username or Password");
           }
         });
       });

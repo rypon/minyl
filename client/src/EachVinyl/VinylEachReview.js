@@ -1,21 +1,19 @@
 import React from "react";
-import { Item, Divider } from "semantic-ui-react";
-import { BorderOutlined } from "@ant-design/icons";
+import { Feed } from "semantic-ui-react";
 
-const VinylEachReview = ({ review }) => (
-  <Item.Group style={{ width: "900px" }}>
-    <Item>
-      <Item.Content>
-        <Item.Header style={{ marginBottom: "15px" }}>
-          Rating: {review.review_rating}
-        </Item.Header>
-        <p>{review.review_text}</p>
-      </Item.Content>
-    </Item>
-    <Divider horizontal>
-      <BorderOutlined />
-    </Divider>
-  </Item.Group>
-);
+function VinylEachReview({ review }) {
+  return (
+    <Feed>
+      <Feed.Event>
+        <Feed.Content>
+          <Feed.Summary>
+            <b>Rating:</b> {review.review_rating}
+          </Feed.Summary>
+          <Feed.Extra text>{review.review_text}</Feed.Extra>
+        </Feed.Content>
+      </Feed.Event>
+    </Feed>
+  );
+}
 
 export default VinylEachReview;

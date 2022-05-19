@@ -12,7 +12,7 @@ function profile({ currentUser, albumCollection }) {
     } else if (albumCollection.length === 1) {
       return "You have 1 vinyl in your collection!";
     } else {
-      return `you have ${albumCollection.length} vinyls in your collection!`;
+      return `You have ${albumCollection.length} vinyls in your collection!`;
     }
   }
   return (
