@@ -80,7 +80,7 @@ function LoginPage({ setCurrentUser, setIsAuthenticated }) {
               rules={[
                 {
                   required: true,
-                  message: "Please input your Username!",
+                  message: "Please input your username!",
                 },
               ]}
               value={username}
@@ -96,7 +96,7 @@ function LoginPage({ setCurrentUser, setIsAuthenticated }) {
               rules={[
                 {
                   required: true,
-                  message: "Please input your Password!",
+                  message: "Please input your password!",
                 },
               ]}
               value={password}

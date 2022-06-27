@@ -1,4 +1,5 @@
 import React from "react";
+import "../component.css";
 
 // import "antd/dist/antd.css";
 import "antd/dist/antd.min.css";

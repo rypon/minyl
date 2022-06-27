@@ -15,7 +15,7 @@ function CurrentTopAlbumContainer({ curAlbums }) {
   return (
     <div>
       <h2 style={{ textAlign: "center" }}>Trending Albums</h2>
-      <Card.Group itemsPerRow={5}>{CurTopCards}</Card.Group>;
+      <Card.Group itemsPerRow={5}>{CurTopCards}</Card.Group>
     </div>
   );
 }

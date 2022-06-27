@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-// import "antd/dist/antd.css";
+import "../component.css";
 import "antd/dist/antd.min.css";
 
 import "../App.css";
@@ -26,7 +26,7 @@ function StarterPage({ handleLogout, currentUser }) {
       <Row justify="center">
         <Col span={8}></Col>
 
-        <Col span={4}>
+        <Col span={4} className="login-button">
           <Link to="/login">
             <Button
               className="button"
@@ -38,7 +38,7 @@ function StarterPage({ handleLogout, currentUser }) {
             </Button>
           </Link>
         </Col>
-        <Col span={4}>
+        <Col span={4} className="signup-button">
           <Link to="/signup">
             <Button
               className="button"

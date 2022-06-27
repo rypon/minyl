@@ -47,7 +47,7 @@ function AlbumCollectionCard({ album, setCount, count }) {
             />
             <Dropdown.Item text="Listen" onClick={showModal} />
             <Dropdown.Divider />
-            <Dropdown.Item icon="trash" text="Delete" onClick={deleteVinyl} />
+            <Dropdown.Item icon="trash" text="Remove" onClick={deleteVinyl} />
           </Dropdown.Menu>
         </Dropdown>
       </Card.Content>

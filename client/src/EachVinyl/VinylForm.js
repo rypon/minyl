@@ -16,7 +16,7 @@ function VinylForm({ addNewReview, setNewRating, setNewReview }) {
       <div>
         <h3>Write a Review</h3>
         <TextArea
-          style={{ height: 120, width: 900 }}
+          style={{ height: 120, width: 900, borderRadius: 5 }}
           placeholder="Write a Reivew"
           onChange={(e) => setNewReview(e.target.value)}
         />
@@ -27,6 +27,7 @@ function VinylForm({ addNewReview, setNewRating, setNewReview }) {
           stringMode={true}
           onChange={onChange}
           placeholder="Rating"
+          style={{ borderRadius: 5 }}
         />
       </div>
       <div style={{ textAlign: "center" }}>

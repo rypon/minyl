@@ -68,11 +68,7 @@ function LanderPage({ currentUser, albumCollection, setAlbumCollection }) {
           />
         </Col>
       </Row>
-      {/* <Row gutter={[8, 8]}>
-        <Col span={2}> </Col>
-        <Col span={2}> </Col>
-        <Col span={2}> </Col>
-      </Row> */}
+
       <Row gutter={[8, 8]}>
         <Col span={2}> </Col>
 

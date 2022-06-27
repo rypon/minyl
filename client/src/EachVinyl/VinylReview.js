@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import "../App.css";
 import VinylForm from "./VinylForm";
 import VinylDisplayReview from "./VinylDisplayReview";
+import { reset } from "canvas-confetti";
 
 function Vinyl({ currentUser, albumCollection }) {
   const [vinyl, setVinyl] = useState(null);
@@ -35,6 +36,7 @@ function Vinyl({ currentUser, albumCollection }) {
     }).then((r) => r.json());
     const newReviewArr = [...getReviews, review];
     setGetReviews(newReviewArr);
+    e.target.reset();
   }
 
   return (

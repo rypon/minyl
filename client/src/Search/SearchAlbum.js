@@ -3,10 +3,10 @@ import React from "react";
 import "antd/dist/antd.min.css";
 
 import "../App.css";
-import { Input, Button, Tooltip } from "antd";
+import { Input, Button } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 
-function SearchAlbum({ setCount, setSearch, count, search }) {
+function SearchAlbum({ setCount, setSearch, count }) {
   return (
     <div>
       <div>
@@ -14,20 +14,21 @@ function SearchAlbum({ setCount, setSearch, count, search }) {
           style={{
             inlineSize: "250px",
             marginBottom: "50px",
+            borderRadius: "25px",
           }}
           placeholder="Search an Album or Artist"
           onChange={(e) => setSearch(e.target.value)}
           onPressEnter={() => setCount(count + 1)}
         />
-        <Tooltip title="search">
-          <Button
-            type="primary"
-            shape="circle"
-            icon={<SearchOutlined />}
-            size="large"
-            onClick={() => setCount(count + 1)}
-          />
-        </Tooltip>
+
+        <Button
+          type="primary"
+          shape="circle"
+          icon={<SearchOutlined />}
+          size="middle"
+          onClick={() => setCount(count + 1)}
+          style={{ marginLeft: "10px" }}
+        />
       </div>
     </div>
   );

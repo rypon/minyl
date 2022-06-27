@@ -1,0 +1,24 @@
+
+/* carousel dots */
+.ant-carousel .slick-dots li button {
+    background: #3a3a3a;
+    opacity: 0.4;
+}
+
+.ant-carousel .slick-dots li.slick-active button {
+    opacity: 1;
+    background: #000000;
+}
+
+/* login/signup buttons */
+
+.login-button {
+    justify-content: center;
+    display: flex;
+}
+
+.signup-button{
+    justify-content: center;
+    display: flex;
+}
+
