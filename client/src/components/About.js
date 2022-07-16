@@ -27,7 +27,7 @@ function About() {
             <h3>
               Final project for Flatiron School's Software Engineering bootcamp.
               My inspiration for Minyl (My Vinyl) came after I started
-              collecting vinyl's over the past 2 years. I had been logging my
+              collecting vinyls over the past 2 years. I had been logging my
               collection list in a Google Sheets with what I currently own, what
               I was to own and haven't found yet, when it was purchased and how
               much it cost.{" "}
